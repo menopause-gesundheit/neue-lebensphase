@@ -13,7 +13,7 @@ Hier geht es um:
 - und das Gefühl, nicht allein zu sein.
 
 👉 **Zur Website:**  
-📍 [Hier ansehen](https://menopause-gesundheit.github.io/neue-lebensphase/) 
+📍 [Ein persönlicher Blick auf die Wechseljahre](https://menopause-gesundheit.github.io/neue-lebensphase/) 
 
 ---
 
