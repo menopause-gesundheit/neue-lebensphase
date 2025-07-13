@@ -1,199 +1,318 @@
 /* style.css */
 
-/* 1. Цветовая палитра */
+
 :root {
-  --bg:           #f5f1ed;  /* мягкий бежево-слоновая кость */
-  --text:         #2e2b28;  /* глубокий тёплый графит */
-  --accent:       #5e2140;  /* изысканный сливовый */
-  --highlight:    #c49d5f;  /* приглушённое золото */
-  --panel-bg:     #ffffff;  
-  --border:       #ddd6cf;  
+  --bg:           #f5f1ed;
+  --text:         #2e2b28;
+  --accent:       #7f5884;   
+  --headline:     #86558e;    
+  --subheadline:  #28605a;    
+  --highlight:    #c49d5f;
+  --panel-bg:     #fff;
+  --border:       #e3dad2;
   --radius:       10px;
-  --shadow:       0 3px 8px rgba(0,0,0,0.1);
-  --transition:   all 0.25s ease;
+  --shadow:       0 3px 8px rgba(0,0,0,0.06);
+  --transition:   all 0.25s cubic-bezier(.4,.16,.4,1);
 }
 
 /* 2. Сброс */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html, body {
-  height: 100%;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 /* 3. Контейнер */
 .container {
-  max-width: 780px;
-  width: 90%;
+  max-width: 720px;
+  width: 92%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 1.7rem 0;
 }
 
 /* 4. Header */
 .hero {
   background: var(--panel-bg);
-  padding: 2rem 0 1rem;
+  padding: 2.1rem 0 1.1rem;
   border-bottom: 1px solid var(--border);
   text-align: center;
-  flex: none;
 }
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.8rem;
-  font-family: Georgia, serif;
-  font-weight: bold;
-  color: var(--accent);
-}
-.logo-emoji {
+  gap: 0.45rem;
   font-size: 2.4rem;
+  font-family: 'Inter', Georgia, serif;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.5px;
 }
+.logo-emoji { font-size: 2.2rem; }
 .hero-subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   color: var(--highlight);
+  font-size: 1.13rem;
 }
 
 /* 5. Main */
 main {
-  flex: 1;
-  padding: 2rem 0;
+  flex: 1 1 auto;
+  padding: 2.1rem 0 0 0;
 }
 
-/* 5.1 Intro */
-.intro-section {
-  margin-bottom: 2.5rem;
+/* 6. Статья */
+.blog-article {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.4rem 0 2.5rem 0;
 }
-.intro-title {
-  font-family: Georgia, serif;
+.intro-title, .blog-article h1 {
+  font-family: 'Inter', Georgia, serif;
   font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-  text-align: center;
+  color: #cfb785;
+  font-weight: 800;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.18;
+  text-align: left;
+  letter-spacing: -1px;
 }
+/* Стиль для h2 — в стиле секции статей */
+.blog-article h2,
+h2.section-title {
+  font-size: 1.35rem;
+  color: #8c6940;
+  font-weight: 700;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  margin-top: 2.2rem;
+  margin-bottom: 1.1rem;
+  border-left: 5px solid #cfb785;
+  padding-left: 0.7rem;
+  background: rgba(240, 230, 200, 0.38);
+  border-radius: 0 7px 7px 0;
+  display: inline-block;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+}
+
+@media (max-width: 600px) {
+  .blog-article h2,
+  h2.section-title {
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+    border-left-width: 4px;
+    margin-top: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+}
+
+.blog-article h3 {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 1.8rem 0 0.8rem 0;
+  line-height: 1.18;
+}
+.blog-article p,
 .intro-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  text-align: justify;
+  font-size: 1.13rem;
+  line-height: 1.75;
+  margin-bottom: 1.23rem;
+  color: var(--text);
 }
-
-/* 5.2 Articles */
-.articles-section {
-  margin-bottom: 2.5rem;
+.blog-article ul, .blog-article ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1.15rem;
 }
-.section-title {
-  font-family: Georgia, serif;
-  font-size: 1.6rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  position: relative;
-}
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 2px;
-  background: var(--highlight);
-  border-radius: 1px;
-}
-
-.articles-list {
-  list-style: none;
-}
-.articles-list li {
-  background: var(--panel-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 1rem;
-  transition: var(--transition);
-}
-.articles-list li:hover {
-  transform: translateY(-2px);
-}
-.articles-list a {
+.blog-article img {
   display: block;
-  padding: 1rem 1.2rem;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  transition: var(--transition);
+  max-width: 98%;
+  margin: 1.3rem auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
-.articles-list a:hover {
-  background: var(--highlight);
-  color: var(--panel-bg);
-}
-
-/* 5.3 Contact */
-.contact-section {
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
-.contact-section a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
-}
-.contact-section a:hover {
-  color: var(--text);
-  text-decoration: underline;
+.blog-signature {
+  margin-top: 2.3rem;
+  font-style: italic;
+  color: #826300;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
 }
 
-/* 6. Footer */
+/* 7. Footer */
 .site-footer {
   background: var(--panel-bg);
   border-top: 1px solid var(--border);
-  padding: 1.5rem 0;
+  padding: 1.5rem 0 1.2rem 0;
   text-align: center;
-  flex: none;
+  margin-top: 2.7rem;      /* ОТСТУП ОТ КОНТЕНТА */
 }
 .site-footer p {
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--gray);
+  margin-bottom: 0.55rem;
+  font-size: 0.97rem;
+  color: #998c8a;
 }
 .site-footer a {
-  color: var(--text);
+  color: var(--accent);
   text-decoration: none;
-  margin: 0 0.5rem;
+  margin: 0 0.45rem;
   transition: var(--transition);
 }
 .site-footer a:hover {
-  color: var(--accent);
+  color: var(--headline);
   text-decoration: underline;
 }
 .disclaimer {
-  font-size: 0.8rem;
-  color: var(--gray);
-  margin-top: 0.75rem;
+  font-size: 0.89rem;
+  color: #abaaa9;
+  margin-top: 0.85rem;
 }
 
-/* 7. Адаптив */
-@media (max-width: 480px) {
-  .logo {
-    font-size: 1.6rem;
+/* 8. Адаптивность */
+@media (max-width: 900px) {
+  .container, .blog-article { max-width: 98vw; }
+}
+@media (max-width: 650px) {
+  body { font-size: 1.01rem; }
+  .container { padding-left: 6vw; padding-right: 6vw; width: 100%; }
+  .hero { padding: 1.1rem 0 0.8rem 0; }
+  .logo { font-size: 1.85rem; }
+  .logo-emoji { font-size: 1.4rem; }
+  .hero-subtitle { font-size: 0.97rem; }
+  .blog-article { padding: 0.7rem 0 1.4rem 0; }
+  .intro-title, .blog-article h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: 0;
+    text-align: left;
+    line-height: 1.16;
   }
-  .intro-title {
-    font-size: 1.75rem;
+
+  .blog-article h3 {
+    font-size: 0.99rem;
+    margin-top: 1.1rem;
+    margin-bottom: 0.5rem;
   }
+  .blog-article p,
+  .intro-text {
+    font-size: 1.01rem;
+    line-height: 1.63;
+    margin-bottom: 0.93rem;
+  }
+  .blog-article ul, .blog-article ol {
+    margin-left: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  .blog-article img {
+    max-width: 94vw;
+    margin: 1rem auto;
+  }
+  .blog-signature { font-size: 0.97rem; margin-top: 1.3rem; }
+  .site-footer {
+    font-size: 0.93rem;
+    padding: 1rem 0 0.5rem 0;
+    margin-top: 1.2rem;
+  }
+}
+@media (max-width: 420px) {
+  .container { padding-left: 3vw; padding-right: 3vw; }
+  .blog-article img { max-width: 98vw; }
+}
+
+.blog-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0 2.3rem 0;
+}
+.blog-image img {
+  max-width: 98%;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px #a89f9b14;
+}
+.img-caption {
+  font-size: 0.97rem;
+  color: #978f86;
+  margin-top: 0.6rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Стиль секции и заголовка */
+.articles-section {
+  margin: 2.5rem 0 2.5rem 0;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  color: #583c1b;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.02em;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  border-left: 5px solid #cfb785;
+  padding-left: 0.7rem;
+  background: rgba(240, 230, 200, 0.3);
+  border-radius: 0 7px 7px 0;
+  display: inline-block;
+}
+
+/* Список статей */
+.articles-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.articles-list li {
+  margin-bottom: 0.55rem;
+  border-radius: 7px;
+  transition: box-shadow 0.17s, background 0.2s;
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(190, 170, 120, 0.07);
+}
+
+.articles-list li:last-child {
+  margin-bottom: 0;
+}
+
+.articles-list a {
+  display: block;
+  padding: 0.95rem 1.2rem 0.95rem 1.25rem;
+  color: #4a3827;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  border-left: 3px solid #cfb785;
+  border-radius: 7px;
+  transition: background 0.15s, color 0.15s, border-color 0.22s;
+  background: linear-gradient(90deg, #fff9e6 0%, #f5f1ed 100%);
+  position: relative;
+}
+
+.articles-list a:hover,
+.articles-list a:focus {
+  background: linear-gradient(90deg, #f5ecd2 0%, #fff9e6 100%);
+  color: #855b21;
+  border-left-color: #b9935b;
+  text-decoration: underline;
+  outline: none;
+}
+
+@media (max-width: 600px) {
   .section-title {
-    font-size: 1.4rem;
+    font-size: 1.13rem;
+    padding-left: 0.5rem;
+    border-left-width: 4px;
   }
   .articles-list a {
-    padding: 0.8rem 1rem;
+    font-size: 1.02rem;
+    padding: 0.74rem 0.6rem 0.74rem 0.8rem;
   }
 }
